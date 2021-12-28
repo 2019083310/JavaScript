@@ -274,3 +274,224 @@ CMD也有自己比较优秀的实现方案： SeaJS
 
 ### 认识 ES Module
 
+JavaScript没有模块化一直是它的痛点，所以才会产生我们前面学习的社区规范：CommonJS、AMD、CMD等，
+
+所以在ES推出自己的模块化系统时，大家也是兴奋异常。
+
+ES Module和CommonJS的模块化有一些不同之处：
+
+- 一方面它使用了import和export关键字；
+- 另一方面它采用编译期的静态分析，并且也加入了动态引用的方式；
+
+ES Module模块采用export和import关键字来实现模块化：
+
+- export负责将模块内的内容导出；
+- import负责从其他模块导入内容； 
+- 了解：采用ES Module将自动采用严格模式：**use strict**
+
+
+
+#### 案例代码结构组件
+
+这里我在浏览器中演示ES6的模块化开发：
+
+![image-20211228130634283](D:\截图\js模块化\image-20211228130634283.png)
+
+如果直接在浏览器中运行代码，会报如下错误：
+
+![image-20211228130933542](D:\截图\js模块化\image-20211228130933542.png)
+
+这个在MDN上面有给出解释： 
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules
+
+你需要注意本地测试 — 如果你通过本地加载Html 文件 (比如一个 file:// 路径的文件), 你将会遇到 CORS 错误，因为Javascript 模块安全性需要。
+
+你需要通过一个服务器来测试。 
+
+**我这里使用的VSCode，VSCode中有一个插件：Live Server**
+
+
+
+### exports关键字
+
+export关键字将一个模块中的变量、函数、类等导出；
+
+**我们希望将其他中内容全部导出，它可以有如下的方式：**
+
+- 方式一：在语句声明的前面直接加上export关键字
+
+- 方式二：将所有需要导出的标识符，放到export后面的 {}中 
+
+  - 注意：这里的 {}里面不是ES6的对象字面量的增强写法，{}也不是表示一个对象的；
+  - 所以： export {name: name}，是错误的写法；
+
+- 方式三：导出时给标识符起一个别名
+
+  ```javascript
+  // 导出方式一：export const name='liu'
+  // 在声明变量，函数，类的时候直接导出
+  
+  // export const name='liu'
+  // export const age=21
+  
+  // 导出方式二：export {name,age}
+  // const name='liu'
+  // const age=21
+  
+  // export {
+  //   name,
+  //   age
+  // }
+  
+  // 导出方式三：起别名
+  
+  // const name='liu'
+  // const age=21
+  
+  // export {
+  //   name as fName,
+  //   age as fAge
+  // }
+  ```
+
+
+
+### import关键字
+
+import关键字负责从另外一个模块中导入内容
+
+**导入内容的方式也有多种：**
+
+- 方式一：import {标识符列表} from '模块'； 
+  - 注意：这里的{}也不是一个对象，里面只是存放导入的标识符列表内容； 
+- 方式二：导入时给标识符起别名 
+- 方式三：通过 * 将模块功能放到一个模块功能对象（a module object）上
+
+```javascript
+// 导入方式一：import {name,age} from './foo.js'
+
+// import {name,age} from './foo.js'
+// 注意，这种方式导入的名字必须跟导出的名字一致
+
+// console.log(name)
+// console.log(age)
+
+// 导入方式二：起别名
+
+// import {name as fName,age as fAge} from './foo.js'
+
+// console.log(fName)
+// console.log(fAge)
+
+// 导入方式三：import * as 对象名自己起 from './foo.js'
+// 一次性导入所有到自己命名的对象中
+
+// import * as foo from './foo.js'
+
+// console.log(foo.name)
+// console.log(foo.age)
+```
+
+
+
+### export和import结合使用
+
+补充：**export和import可以结合使用**
+
+为什么要这样做呢？
+
+- 在开发和封装一个功能库时，通常我们希望将暴露的所有接口放到一个文件中；
+- 这样方便指定统一的接口规范，也方便阅读； 
+- 这个时候，我们就可以使用export和import结合使用；
+
+```javascript
+// 导入导出方式一
+// import {timeFormat} from './shijian.js'
+// import {format} from './time.js'
+
+// export {
+//   timeFormat,
+//   format
+// }
+
+// 导入导出方式二
+// export {timeFormat} from './shijian.js'
+// export {format} from './time.js'
+
+// 导入导出方式三
+// export * from './time.js'
+// export * from './shijian.js'
+```
+
+
+
+### default用法
+
+前面我们了解的导出功能都是有名字的导出（named exports）：
+
+- 在导出export时指定了名字；
+- 在导入import时需要知道具体的名字；
+
+还有一种导出叫做默认导出（default export） 
+
+- 默认导出export时可以不需要指定名字；
+- 在导入时不需要使用 {}，并且可以自己来指定名字；
+- 它也方便我们和现有的CommonJS等规范相互操作；
+
+**注意：在一个模块中，只能有一个默认导出（default export）**；
+
+
+
+### import函数
+
+通过import加载一个模块，是不可以在其放到逻辑代码中的，比如：
+
+为什么会出现这个情况呢？
+
+- 这是因为ES Module在被JS引擎解析时，就必须知道它的依赖关系；
+- 由于这个时候js代码没有任何的运行，所以无法在进行类似于if判断中根据代码的执行情况；
+- 甚至下面的这种写法也是错误的：因为我们必须到运行时能确定path的值；
+
+但是某些情况下，我们确确实实希望动态的来加载某一个模块：
+
+- 如果根据不懂的条件，动态来选择加载模块的路径；
+- 这个时候我们需要使用 import() 函数来动态加载；
+
+
+
+#### import meta
+
+import.meta是一个给JavaScript模块暴露特定上下文的元数据属性的对象。 
+
+- 它包含了这个模块的信息，比如说这个模块的URL； 
+- 在ES11（ES2020）中新增的特性；
+
+
+
+### ES Module的解析流程
+
+ES Module是如何被浏览器解析并且让模块之间可以相互引用的呢？
+
+https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
+
+ES Module的解析过程可以划分为三个阶段：
+
+- 阶段一：构建（Construction），根据地址查找js文件，并且下载，将其解析成模块记录（Module Record）；
+- 阶段二：实例化（Instantiation），对模块记录进行实例化，并且分配内存空间，解析模块的导入和导出语句，把模块指向对应的内存地址。 
+- 阶段三：运行（Evaluation），运行代码，计算值，并且将值填充到内存地址中
+
+![image-20211228134500848](D:\截图\js模块化\image-20211228134500848.png)
+
+
+
+#### 阶段一：构建阶段
+
+![image-20211228134526314](D:\截图\js模块化\image-20211228134526314.png)
+
+
+
+#### 阶段二和三：实例化阶段 – 求值阶段
+
+![image-20211228134552496](D:\截图\js模块化\image-20211228134552496.png)
+
