@@ -1,0 +1,1 @@
+console.log('foo模块被加载执行了')
