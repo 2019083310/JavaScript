@@ -3,13 +3,13 @@
 }
 
 // if语句的代码就是块级作用域
-// if (true) {
-//   var foo = "foo"
-//   let bar = "bar"
-// }
+if (true) {
+  var foo = "foo"
+  let bar = "bar"
+}
 
-// console.log(foo)
-// console.log(bar)
+console.log(foo)
+console.log(bar)
 
 // switch语句的代码也是块级作用域
 // var color = "red"
