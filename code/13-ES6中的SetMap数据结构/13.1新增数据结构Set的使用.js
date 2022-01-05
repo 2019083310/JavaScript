@@ -4,7 +4,7 @@ set.add(1)
 set.add(3)
 set.add(5)
 
-// console.log(set)
+console.log(set)
 // console.log(set.length)Set是没有length属性的
 
 // 2.添加对象时特别注意:
