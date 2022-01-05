@@ -2,7 +2,8 @@ const box=document.querySelector('#box')
 
 console.log(box)
 console.log(box.__proto__)
-console.log(Element)
+console.log(Object.getOwnPropertyDescriptors(Element))
+// console.log(Element.length)
 
 
 // HTML中所有的属性、注释、元素、文档都被称为节点
