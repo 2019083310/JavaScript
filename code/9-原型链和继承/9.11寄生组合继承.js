@@ -47,5 +47,7 @@ stu.studying()
 stu.running()
 stu.eating()
 
+console.log(stu.__proto__)
+
 console.log(stu.constructor.name)
 

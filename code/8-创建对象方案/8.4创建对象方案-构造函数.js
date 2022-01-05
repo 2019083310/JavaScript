@@ -12,6 +12,12 @@ function Person(name, age, height, address) {
   this.running = function() {
     console.log(this.name + "在跑步")
   }
+
+  // return 123
+  // return undefined
+  // return null
+  // return {name:'liu'}
+  // return基本数据类型都是没用的
 }
 
 
