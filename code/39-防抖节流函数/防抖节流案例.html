@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 模拟的案例是当我们在输入框搜内容的时候，会向服务器发送网络请求来显示我们输入的字符串所匹配的内容 -->
+  <input type="text" name="" id="in">
+
+  <script src='https://cdn.jsdelivr.net/npm/underscore@1.13.2/underscore-umd-min.js'></script>
+
+  <script>
+    const input=document.querySelector('#in')
+    let count=0
+
+    // 1.普通写法
+    // input.oninput=function(){
+    //   console.log(`向服务器发送第${++count}次网络请求`)
+    // }
+
+    // 2.利用underscore库实现防抖节流
+    // 2.1防抖
+    function inputEvent(){
+      console.log(`向服务器发送第${++count}次网络请求`)
+    }
+    // input.oninput=_.debounce(inputEvent,2000)
+
+    // 2.2节流
+    // input.oninput=_.throttle(inputEvent,2000)
+  </script>
+</body>
+</html>

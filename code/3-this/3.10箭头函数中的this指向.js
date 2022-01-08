@@ -32,8 +32,10 @@ var obj = {
     setTimeout(() => {
       var result = ["abc", "cba", "nba"]
       this.data = result
+      console.log(this)
     }, 2000);
   }
 }
 
 obj.getData()
+console.log(obj.data)

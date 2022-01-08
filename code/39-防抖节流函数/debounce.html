@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" name="" id="text">
+  <button id='btn'>取消</button>
+
+  <!-- <script src='./39.1防抖函数的基本实现v1.js'></script> -->
+  <!-- <script src='./39.3优化2-立即执行.js'></script> -->
+  <!-- <script src='./39.4优化3-取消请求.js'></script> -->
+  <script src='./39.5优化4-函数返回值.js'></script>
+
+  <script>
+    
+    const textInput=document.querySelector('#text')
+    let count=0
+    function inputEvent(event){
+      console.log(`想服务器发送了${++count}次网络请求`,this,event)
+      return 'coder'
+    }
+
+    // textInput.oninput=debounce(inputEvent,2000,true)
+    textInput.oninput=debounce(inputEvent,2000,false,(res=>{
+      console.log('函数返回值：'+res)
+    }))
+
+    // const btn=document.querySelector('#btn')
+    // btn.onclick=function(){
+    //   debounce().cancel()
+    // }
+  </script>
+</body>
+</html>
