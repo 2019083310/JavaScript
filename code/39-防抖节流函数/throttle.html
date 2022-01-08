@@ -7,6 +7,28 @@
   <title>Document</title>
 </head>
 <body>
-  <script src='./39.6节流函数的基本实现.js'></script>
+  <input type="text" name="" id="text">
+  <button>取消</button>
+
+  <!-- <script src='./39.6节流函数的基本实现.js'></script> -->
+  <!-- <script src='./39.7优化1-leading.js'></script> -->
+  <!-- <script src='./39.8优化2-trailing.js'></script> -->
+  <!-- <script src='./39.9优化3-this-参数.js'></script> -->
+  <script src='./39.11优化5-函数返回值.js'></script>
+
+  <script>
+    const inputText=document.querySelector('#text')
+
+    let count=0
+    function inputEvent(event){
+      console.log(`向服务器发送${++count}次请求`,this,event)
+
+      return 'coder'
+    }
+
+    inputText.oninput=throttle(inputEvent,3000,{leading:false,trailing:true,resultCallback:function(res){
+      console.log(res)
+    }})
+  </script>
 </body>
 </html>
