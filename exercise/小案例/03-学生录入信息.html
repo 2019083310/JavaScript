@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        fieldset {
+            width: 600px;
+            height: 220px;
+            margin: 10px auto;
+            padding: 15px;
+        }
+        
+        input {
+            height: 20px;
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+        
+        select {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        
+        button {
+            width: 80px;
+            height: 30px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        
+        span {
+            margin-left: 10px;
+        }
+        
+        table,
+        tr,
+        td {
+            border: 1px solid #ccc;
+        }
+        
+        tr {
+            height: 40px;
+        }
+        
+        table {
+            width: 630px;
+            text-align: center;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>学生录入系统</legend>
+            <p>
+                <span>姓名：</span>
+                <input type="text" name="username" class="username">
+            </p>
+            <p>
+                <span>年龄：</span>
+                <input type="text" name="age" class="age">
+            </p>
+            <p>
+                <span>性别：</span>
+                <select name="sex" id="sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </p>
+            <p>
+                <span>手机：</span>
+                <input type="text" name="phone" class="phone">
+            </p>
+            <p>
+                <button id="btn">确认提交</button>
+            </p>
+        </fieldset>
+        <table id="employeeTable">
+            <tr>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>手机</td>
+                <td>删除</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+      function delA(){
+        const tr=this.parentNode.parentNode
+        const name=tr.children[0].innerHTML
+        const flag=confirm('确认删除'+name+'?')
+        if(flag){
+          tr.parentNode.removeChild(tr)
+        }
+      }
+
+      const btn=document.getElementById('btn')
+      const input=document.getElementsByTagName('input')
+      const sex=document.getElementById('sex')
+
+      btn.onclick=function(){
+        const tr=document.createElement('tr')
+        const nameTd=document.createElement('td')
+        const ageTd=document.createElement('td')
+        const sexTd=document.createElement('td')
+        const phoneTd=document.createElement('td')
+        const aTd=document.createElement('td')
+        const a=document.createElement('a')
+        const name=input[0].value
+        const age=input[1].value
+        const phone=input[2].value
+        const sexContent=sex.value
+        const nameText=document.createTextNode(name)
+        const ageText=document.createTextNode(age)
+        const phoneText=document.createTextNode(phone)
+        const sexText=document.createTextNode(sexContent)
+        const delText=document.createTextNode('删除')
+        nameTd.appendChild(nameText)
+        ageTd.appendChild(ageText)
+        phoneTd.appendChild(phoneText)
+        sexTd.appendChild(sexText)
+        a.appendChild(delText)
+        a.href='javascript:;'
+        aTd.appendChild(a)
+        tr.appendChild(nameTd)
+        tr.appendChild(ageTd)
+        tr.appendChild(sexTd)
+        tr.appendChild(phoneTd)
+        tr.appendChild(aTd)
+        a.onclick=delA
+        const employeeTable=document.getElementById('employeeTable')
+
+        const tbody=employeeTable.getElementsByTagName('tbody')[0]
+        tbody.appendChild(tr)
+        tr.style.backgroundColor='#fff'
+      }
+    </script>
+</body>
+
+</html>

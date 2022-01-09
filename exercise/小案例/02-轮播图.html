@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    #outer {
+      width: 500px;
+      height: 400px;
+      background-color: #bfa;
+      position: relative;
+      margin: 50px auto;
+      overflow: hidden;
+    }
+
+    #imgList {
+      position: absolute;
+      padding: 10px;
+    }
+
+    #imgList li {
+      float: left;
+      margin-left: 10px;
+    }
+
+    #imgList li:nth-child(1) {
+      margin-left: 0;
+    }
+
+    #imgList li img {
+      width: 480px;
+      height: 380px;
+    }
+
+    #navDiv {
+      position: absolute;
+      bottom: 10px;
+    }
+
+    #navDiv li {
+      width: 12px;
+      height: 12px;
+      background-color: rgba(233, 233, 233, 0.3);
+      border-radius: 50%;
+      float: left;
+      margin: 0 8px;
+    }
+
+    #navDiv li:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <ul id="imgList">
+      <li>
+        <a href="javascript:;"><img src="./img/1.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="./img/2.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="./img/3.png" alt=""></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="./img/4.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="./img/5.jpg" alt=""></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="./img/1.jpg" alt=""></a>
+      </li>
+    </ul>
+    <ul id="navDiv">
+      <li class="a">
+        <a href="javascript:;" class="b"></a>
+      </li>
+      <li class="a">
+        <a href="javascript:;" class="b"></a>
+      </li>
+      <li class="a">
+        <a href="javascript:;" class="b"></a>
+      </li>
+      <li class="a">
+        <a href="javascript:;" class="b"></a>
+      </li>
+      <li class="a">
+        <a href="javascript:;" class="b"></a>
+      </li>
+    </ul>
+  </div>
+  <!-- <script src='./js/move.js'></script> -->
+  <script>
+    var imgList = document.getElementById('imgList')
+    var imgArr = document.getElementsByTagName('img')
+    imgList.style.width = 500 * imgArr.length + 'px'
+
+    var outer = document.getElementById('outer')
+    var navDiv = document.getElementById('navDiv')
+    navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + 'px'
+
+    var index = 0
+    var allA = document.querySelectorAll('.a')
+    allA[index].style.backgroundColor = 'yellowgreen'
+    
+    //手动点击切换图片 
+    for (var i = 0; i < allA.length; i++) {
+      allA[i].num=i
+      allA[i].onclick=function(){
+        // 清空定时器的自动切换图片
+        clearInterval(timer)
+        index=this.num
+        // 改变按钮颜色
+        setA()
+
+        // 使用move函数切换图片
+        move(imgList,'left',-490*index,20,function(){
+          // 动画执行完毕，开启autoChange
+          autoChange()
+        })
+      }
+    }
+
+    autoChange()
+    var timer
+
+    // 自定义图片切换函数
+    function autoChange() {
+      timer = setInterval(() => {
+        //索引自增
+        index++
+        index = index % imgArr.length
+        move(imgList, 'left', -490 * index, 20, function (){
+          setA()
+        })
+      }, 3000)
+    }
+
+    // 定义按钮点击切换图片函数
+    function setA(){
+      if(index>=imgArr.length-1){
+        //index设置为0
+        index=0
+        imgList.style.left=0
+      }
+      for(var i=0;i<allA.length;i++){
+        allA[i].style.backgroundColor=''
+      }
+      allA[index].style.backgroundColor='yellowgreen'
+    }
+
+    // 定义图片切换函数
+    function move(obj, attr, target, speed, callback) {
+      clearInterval(obj.timer)
+      var current = parseInt(getStyle(obj, attr))
+      if (current > target) {
+        speed = -speed
+      }
+      obj.timer = setInterval(function () {
+        var oldValue = parseInt(getStyle(obj, attr))
+        var newValue = oldValue + speed
+        if (speed < 0 && newValue < target || speed > 0 && newValue > target) {
+          newValue = target
+        }
+        obj.style[attr] = newValue + "px"
+        if (newValue == target) {
+          clearInterval(obj.timer)
+          //动画执行完毕，调用callback函数
+          callback && callback()
+        }
+      }, 30)
+    }
+
+    // 定义获取样式函数
+    function getStyle(obj, name) {
+      if (window.getComputedStyle) {
+        return getComputedStyle(obj, null)[name]
+      } else {
+        return obj.currentStyle[name]
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>3级联动菜单</title>
+</head>
+
+<body>
+    <!--onchange 事件会在域的内容改变时发生,onchange 事件也可用于单选框与复选框改变后触发的事件-->
+    <select id="province" onchange="change(this.value)">
+      <option>请选择省份</option>
+    </select>
+
+    <select id="city" onchange="countyChange(this.value)">
+      <option>请选择地市</option>
+    </select>
+
+    <select id="county">
+      <option>请选择县城</option>
+    </select>
+    <script>
+        var region = {
+            广东: {
+                "广州": ["广州1", "广州2", "广州3"],
+
+                "珠海": ["珠海1", "珠海2", "珠海3"],
+
+                "佛山": ["佛山1"]
+            },
+            湖南: {
+                "常德": ["石门", "桃源", "临澧", "汉寿"],
+
+                "益阳": ["益阳1", "益阳2", "益阳3"]
+            }
+        }
+        var province = document.querySelector("#province")//querySelector获取id="province"的元素
+        var city = document.querySelector("#city")
+        var county = document.querySelector("#county")
+
+        //二级联动不用定义你选的省份,直接用省份(key)来决定下面的市(value)值
+        var provinceName = null;
+
+        //循环region
+        for (ele in region) {
+            // 1、new Option("文本","值",true,true).后面两个true分别表示默认被选中和有效
+            // 2、console.log(op);<option value="广东">广东</option> <option value="湖南">湖南</option>
+            var op = new Option(ele, ele, false, false)
+            //将循环出来的元素追加到province下拉框里，第一次训话length=1，第二次循环length=2
+            province.options[province.length] = op
+        }
+
+        //当发生改变将接收当前的的值
+        var change = function(src) {
+            city.innerHTML = ""; //获取对象的内容 或 向对象插入内容，为了立马改变
+
+            if (src === '请选择省份') { //不改变
+                var op = new Option('请选择地市', '请选择地市', false, false)
+                city.options[0] = op
+            } else {
+                //循环第二层
+                for (index in region[src]) {
+                    //console.log(index);
+                    //将第二层的元素插入city下拉框
+                    var op = new Option(index, index, false, false)
+                    city.options[city.length] = op
+                }
+            }
+            //记住选择省份的值
+            provinceName = src
+            //触发第三级函数，将当前值传入
+            countyChange(city.value)
+        }
+
+        var countyChange = function(src2) {
+            county.innerHTML = ""; //获取对象的内容 或 向对象插入内容，为了立马改变
+            if (src2 === '请选择地市') { //不改变
+                var op = new Option('请选择县城', '请选择县城', false, false);
+                county.options[0] = op;
+            } else {
+                //循环第三层  比如循环广东下的广州
+                for (index in region[provinceName][src2]) {
+                    //console.log(index);
+                    var op = new Option(region[provinceName][src2][index], region[provinceName][src2][index], false, false);
+                    county.options[county.length] = op;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

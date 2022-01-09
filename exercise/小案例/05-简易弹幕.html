@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .newList {
+            height: 100px;
+            overflow: hidden;
+            background-color: #ccc;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="words" />
+    <input type="button" value="走你" id="btn" />
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function() {
+            var words = document.getElementById("words").value
+            var span = document.createElement("span")
+            span.innerHTML = words
+            document.getElementById("words").value = ""// 清空之前的内容
+            span.style.position = "absolute"
+            span.style.left = "600px"
+            span.style.top = Math.floor(document.documentElement.clientHeight * Math.random()) + "px"
+            document.body.appendChild(span)
+            // 让span动起来
+            timer = setInterval(function() {
+                span.style.left = parseInt(span.style.left) - 4 + "px"
+                // 当span离开了浏览器，需要清空定时器，并销毁span
+                if (parseInt(span.style.left) < -1 * span.offsetWidth) {
+                    // 删除span
+                    document.body.removeChild(span)
+                        // 清空定时器
+                    clearInterval(timer)
+                }
+            }, 50)
+        }
+    </script>
+
+</body>
+
+</html>

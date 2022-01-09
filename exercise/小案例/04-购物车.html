@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        td {
+            width: 80px;
+            height: 30px;
+            text-align: center;
+        }
+        
+        #sum {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var btn = document.getElementById("btn");
+            var btn01 = document.getElementById("btn01");
+            var btn04 = document.getElementById("btn04");
+            var btn02 = document.getElementById("btn02");
+            var btn03 = document.getElementById("btn03");
+            var btn05 = document.getElementById("btn05");
+            var btn06 = document.getElementById("btn06");
+            var num = document.getElementById("num");
+            var num2 = document.getElementById("num2");
+            var yuan = document.getElementById("yuan");
+            btn02.onclick = function() {
+                if (num.innerHTML != 1) {
+                    num.innerHTML--
+                    btn01.onclick()
+                }
+            };
+            btn03.onclick = function() {
+                num.innerHTML++
+                btn01.onclick()
+            };
+            btn05.onclick = function() {
+                if (num2.innerHTML != 1) {
+                    num2.innerHTML--
+                    btn04.onclick()
+                }
+            };
+            btn06.onclick = function() {
+                ++num2.innerHTML
+                btn04.onclick()
+            };
+            btn04.onclick = function() {
+                if (num.innerHTML != 1) {
+                    yuan.innerHTML = num2.innerHTML * 100 + num.innerHTML * 200;
+                } else {
+                    yuan.innerHTML = num2.innerHTML * 100;
+                }
+
+            };
+            btn01.onclick = function() {
+                if (num2.innerHTML != 1) {
+                    yuan.innerHTML = num2.innerHTML * 100 + num.innerHTML * 200;
+                } else {
+                    yuan.innerHTML = num.innerHTML * 200;
+                }
+            };
+            btn.onclick = function() {
+                btn01.checked = true;
+                btn04.checked = true;
+                yuan.innerHTML = num.innerHTML * 200 + num2.innerHTML * 100;
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <button id="btn"> 全选</button>
+            </td>
+            <td>商品名称</td>
+            <td>单价</td>
+            <td>数量</td>
+            <td>小计</td>
+
+            <td>操作</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="1" id="btn01">
+            </td>
+            <td>电脑</td>
+            <td>200</td>
+            <td>
+                <button id="btn02">-</button>
+                <span id="num">1</span>
+                <button id="btn03">+</button>
+            </td>
+            <td>200</td>
+            <td>删除</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="1" id="btn04">
+            </td>
+            <td>手机</td>
+            <td>100</td>
+            <td>
+                <button id="btn05">-</button>
+                <span id="num2">1</span>
+                <button id="btn06">+</button>
+            </td>
+            <td>100</td>
+            <td>删除</td>
+        </tr>
+    </table>
+    <div id="sum">
+        <span>总计：</span>
+        <span id="yuan">0</span>
+    </div>
+</body>
+
+</html>
