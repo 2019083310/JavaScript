@@ -37,3 +37,28 @@ delete obj['price']
 //   configurable:true
 // })
 console.log(obj)//浏览器上为了调试的友好型，可以让我们看到不可枚举属性，但是颜色不一样
+
+// 变量作为window对象的属性
+var a=1
+b=2
+let d=4
+eval('var c=3')
+delete d
+console.log(Object.getOwnPropertyDescriptor(window,'a'))
+console.log(Object.getOwnPropertyDescriptor(window,'b'))
+console.log(Object.getOwnPropertyDescriptor(window,'c'))
+// console.log(Object.getOwnPropertyDescriptor('d'))
+// console.log(d)
+
+// Boolean
+const flag1=null||undefined
+const flag2=null&&undefined
+
+console.log(flag1)
+console.log(flag2)
+
+// join()方法
+console.log(0xff^33)
+// console.log(parseInt([0,0,1,0,0].join('')+1))//1001
+const arr=[1,2,3]
+console.log(arr.join(''))
