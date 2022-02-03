@@ -20,7 +20,7 @@ const obj={
   name:'liu'
 }
 Object.defineProperty(obj,'price',{
-  configurable:false//这个属性为false之后，是不能删除和修改属性描述符的
+  configurable:false//这个属性为false之后，是不能删除和修改属性描述符的配置
 })
 Object.defineProperty(obj,'id',{
   value:-1

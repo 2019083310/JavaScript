@@ -11,7 +11,9 @@ console.log(Number(undefined)) //NaN
 console.log(Number([1])) //1
 console.log(Number(['1'])) //1
 console.log(Number([])) //0
-console.log(Number({ name: 'liu' })) //NaN
+console.log(Number({
+  name: 'liu'
+})) //NaN
 console.log(Number({})) //NaN
 console.log([].valueOf()) //[]
 console.log(['1'].valueOf()) //['1']
@@ -20,10 +22,14 @@ console.log(typeof ['1'].toString()) //string
 console.log(['1', '2'].toString()) //1,2
 console.log([1, 2, 3].valueOf()) //[1,2,3]
 console.log({}.valueOf()) //{}
-console.log({ a: 'a' }.valueOf()) //{a:'a'}
+console.log({
+  a: 'a'
+}.valueOf()) //{a:'a'}
 console.log(typeof [].toString()) //string
 console.log({}.toString()) //[Object Object]
-console.log({ 'a': 'b' }.toString()) //[Object Object]
+console.log({
+  'a': 'b'
+}.toString()) //[Object Object]
 
 // 2.字符串
 // 数值字符串、布尔，Null、undefined都会转化为字符串，加上双引号内容不变
@@ -50,7 +56,9 @@ console.log(Boolean(NaN)) //false
 console.log(Boolean(['1'])) //true
 console.log(Boolean([])) //true
 console.log(Boolean({})) //true
-console.log(Boolean({ a: 'a' })) //true
+console.log(Boolean({
+  a: 'a'
+})) //true
 
 // 4.null和undefined各自只有一个值就是他们本身，他们没有包装类
 console.log(undefined)
@@ -64,9 +72,11 @@ console.log(Object(false)) //Boolean类的对象
 console.log(Object(null)) //空对象
 console.log(Object(undefined)) //空对象
 console.log(Object(['1'])) //转化为数组，数组也是个对象，就会返回它本身
-    // 对象类型包括数组相当于调用valueOf()方法
+// 对象类型包括数组相当于调用valueOf()方法
 console.log(Object({})) //本身
-console.log(Object({ a: "a" })) //对象本身
+console.log(Object({
+  a: "a"
+})) //对象本身
 
 // 6.布尔类型和任何类型的值做比较都会转化为数值类型
 //null和undefined在关系运算符中会转化为数值，在相等运算符中会转化为false
