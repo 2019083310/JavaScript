@@ -4,7 +4,7 @@
 // foo(...[1,2])
 
 function bar(...args){
-  // console.log(args)
+  // console.log(...args)
   function test(args){
     console.log(args)
   }

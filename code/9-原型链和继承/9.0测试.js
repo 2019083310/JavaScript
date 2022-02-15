@@ -13,3 +13,11 @@ Function.prototype.b=function(){}
 
 const f=new F()
 console.log(f instanceof Object)//true
+
+function foo(name,age){
+  this.name=name
+  this.age=age
+}
+
+const p=new foo('liu',18)
+console.log(p)
