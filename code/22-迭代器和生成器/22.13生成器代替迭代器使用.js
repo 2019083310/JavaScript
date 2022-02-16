@@ -1,9 +1,9 @@
 // 1.生成器来替代迭代器
 function* createArrayIterator(arr) {
   // 第一种写法
-  // for(let i=0;i<arr.length;i++){
-  //   yield arr[i]
-  // }
+  for(let i=0;i<arr.length;i++){
+    yield arr[i]
+  }
 
   // 第二种写法
   // for(let item of arr){
@@ -15,21 +15,21 @@ function* createArrayIterator(arr) {
 
 }
 
-// const names=['abc','cba','nba']
-// const namesIterator=createArrayIterator(names)
+const names=['abc','cba','nba']
+const namesIterator=createArrayIterator(names)
 
-// console.log(namesIterator.next())
-// console.log(namesIterator.next())
-// console.log(namesIterator.next())
-// console.log(namesIterator.next())
+console.log(namesIterator.next())
+console.log(namesIterator.next())
+console.log(namesIterator.next())
+console.log(namesIterator.next())
 
 // 2.创建一个函数，这个函数可以迭代一个范围内的数字
 //10 20
-function* createRangeIterator(start, end) {
-  let index = start
-  while (index < end) {
-    yield index++
-  }
+// function* createRangeIterator(start, end) {
+//   let index = start
+//   while (index < end) {
+//     yield index++
+//   }
 
   // let index = start
   // return {
@@ -41,7 +41,7 @@ function* createRangeIterator(start, end) {
   //     }
   //   }
   // }
-}
+// }
 
 // const rangeIterator = createRangeIterator(10, 20)
 // console.log(rangeIterator.next())
