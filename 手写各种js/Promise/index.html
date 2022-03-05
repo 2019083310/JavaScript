@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./01_promise.js"></script>
+  <script src="./02_promise.then.js"></script>
+  <script src='./03_promise.resolve.js'></script>
+  <script src='./04_promise.reject.js'></script>
+  <script src='./05_promise.all.js'></script>
+  <script src='./06_promise.race.js'></script>
+  <script src='.//086_promise.race.js'></script>
+  <script src='./07_promise.any.js'></script>
+  <script src='./08_promise.allSettled.js'></script>
+
+  <script>
+    const p = new LyPromise((resolve, reject) => {
+      setTimeout(() => {
+        console.log(1)
+        resolve('kobe')
+      },2000)
+    })
+
+    p.then(res=>{
+      console.log(res)
+    }).then(res=>{
+      console.log(res)
+    })
+
+    console.log(p)
+
+    const p2=LyPromise.resolve(1)
+    const p3=LyPromise.reject(2)
+    const p4=LyPromise.resolve(p2)
+
+    console.log(p2)
+    console.log(p3)
+    console.log(p4)
+  </script>
+</body>
+
+</html>

@@ -17,6 +17,10 @@ map.set(obj2, "bbb")
 map.set(1, "ccc")
 console.log(map)
 
+// 不能通过.运算符或者[]方法获取
+// console.log(map[obj1])
+
+
 // const map2 = new Map([[obj1, "aaa"], [obj2, "bbb"], [2, "ddd"]])
 // console.log(map2)
 
