@@ -18,6 +18,7 @@ Array.prototype.LyIncludes=function(key,start=0){
 }
 
 // 测试
+console.log([1,2,3].LyIncludes(NaN))
 console.log([1,2,3].LyIncludes(2))//true
 console.log([1,2,3,NaN].LyIncludes(NaN))//true
 console.log([1,2,3,NaN].LyIncludes(1,1))//false
