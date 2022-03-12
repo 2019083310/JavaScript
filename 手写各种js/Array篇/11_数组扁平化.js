@@ -20,3 +20,11 @@ function flatter2(arr){
   return arr
 }
 console.log(flatter2([1,2,[3,4],[5,[6,7,[8,9]]]]))
+
+// 3.JSON--正则
+const res=JSON.stringify([1,2,[3,4],[5,[6,7,[8,9]]]]).replace(/\[|\]/g,'').split(',')
+console.log(res)
+
+// 4.JSON改良版
+const res2=JSON.parse('['+JSON.stringify([1,2,[3,4],[5,[6,7,[8,9]]]]).replace(/\[|\]/g,'')+']')
+console.log(res2)
