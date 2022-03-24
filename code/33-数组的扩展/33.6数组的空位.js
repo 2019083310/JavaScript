@@ -2,7 +2,7 @@
 // undefined还代表有值
 
 // ES5以前对空位的处理很不一致
-//1.forEach/filter/reduce/every/some()都会跳过空位
+//1.every/forEach/filter/reduce/some()都会跳过空位
 //2.map会跳过空位，但会保留这个值
 //3.join()和toString()会将空位视为undefined,而undefined和null会被处理成字符串
 

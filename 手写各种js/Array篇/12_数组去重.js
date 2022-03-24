@@ -52,11 +52,15 @@ function uniqueArray(arr){
   const newArr=arr.filter((item,index)=>{
     return arr.indexOf(item,0)===index
   })
+  return newArr
 }
 
+const arr=[1,2,3,{},{},{name:"1"},{name:'1'},3,1,2,1,2,3,true,true,false,false]
+console.log(uniqueArray(arr))
+
 // 5.reduce+includes
-function uniqueArray(arr){
-  const newArr=arr.reduce((pre,cur)=>{
-    pre.includes(cur)?pre:[...pre,cur]
-  },[])
-}
+// function uniqueArray(arr){
+//   const newArr=arr.reduce((pre,cur)=>{
+//     pre.includes(cur)?pre:[...pre,cur]
+//   },[])
+// }
