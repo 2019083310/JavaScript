@@ -38,6 +38,8 @@ function* foo() {
 // 调用生成器函数时, 会给我们返回一个生成器对象
 const generator = foo()
 
+console.log(generator)
+
 // 开始执行第一段代码
 generator.next()
 
