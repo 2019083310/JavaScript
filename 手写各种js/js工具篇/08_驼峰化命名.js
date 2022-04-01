@@ -14,19 +14,19 @@
 // console.log(getKebabCase('getElementById'))
 
 // 2-数组
-// function getKebabCase(str){
-//   let arr=str.split('')
-//   let result=arr.map(item=>{
-//     if(item.toUpperCase()===item){
-//       return '-'+item.toLowerCase()
-//     }else{
-//       return item
-//     }
-//   })
+function getKebabCase(str){
+  let arr=str.split('')
+  let result=arr.map(item=>{
+    if(item.toUpperCase()===item){
+      return '-'+item.toLowerCase()
+    }else{
+      return item
+    }
+  })
 
-//   return result.join('')
-// }
-// console.log(getKebabCase('getElementById'))
+  return result.join('')
+}
+console.log(getKebabCase('getElementById'))
 
 // 将短横线命名规则的字符串转换成使用驼峰命名法的字符串. 
 // 例如: 'get-element-by-id ' => 'getElementById'

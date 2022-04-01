@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #wrapper{
+      width: 300px;
+      /* height: 30px; */
+      margin:0 auto;
+      margin-top:40px;
+      border:1px solid #000;
+    }
+
+    /* 设置进度条动画 */
+    #progress{
+      animation:move 2s;
+      background-color: aqua;
+      color:#fff;
+      text-align: center;
+    }
+    @keyframes move{
+      from{
+        width:0;
+      }
+
+      to{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 进度条容器 -->
+  <div id="wrapper">
+    <!-- 进度条 -->
+    <div id="progress">
+
+    </div>
+  </div>
+  <script>
+    // 立即执行函数
+    (function (){
+      const progressBar={
+        init:function(){
+          const progress=document.querySelector('#progress')
+          let count=0
+          let timer=setInterval(()=>{
+            count++
+            progress.innerHTML=count+'%'
+            if(count===100){
+              clearInterval(timer)
+            }
+          },17)
+        }
+      }
+      progressBar.init()
+    })()
+  </script>
+</body>
+
+</html>
