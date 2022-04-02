@@ -12,11 +12,11 @@ console.log(y)
 // js在解析的时候是从左向右解析，赋值的时候从右向左赋值
 // 所以，obj.child会被复制为{num2:935},res和obj相同指向
 
-function foo() {
-    var a = b = 1
-    console.log(a) //1
+// function foo() {
+    // var a = b = 1
+    // console.log(a) //1
         // a为局部变量
-}
-foo()
-console.log(b) //1，b为全局变量
+// }
+// foo()
+// console.log(b) //1，b为全局变量
     // console.log(a) //报错
