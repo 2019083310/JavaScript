@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: #bfa;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    const box = document.querySelector('#box')
+
+    let curLeft
+    let curTop
+    function moveFn(event) {
+      event = event || window.event
+
+      let left = event.clientX
+      let top = event.clientY
+
+      box.style.left = left - curLeft + 'px'
+      box.style.top = top - curTop + 'px'
+    }
+
+    function cancelFn() {
+      document.removeEventListener('mousemove', moveFn)
+      document.removeEventListener('mouseup', cancelFn)
+    }
+
+    box.addEventListener('mousedown', (event) => {
+      event = event || window.event
+      curLeft = event.clientX - box.offsetLeft
+      curTop = event.clientY - box.offsetTop
+
+      document.addEventListener('mousemove', moveFn)
+
+      document.addEventListener('mouseup', cancelFn)
+
+      return false
+    })
+  </script>
+</body>
+
+</html>

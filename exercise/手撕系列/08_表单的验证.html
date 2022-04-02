@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    fieldset {
+      width: 600px;
+      height: 220px;
+      margin: 10px auto;
+      padding: 15px;
+    }
+
+    input {
+      height: 20px;
+      margin-top: 15px;
+      margin-left: 10px;
+    }
+
+    select {
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+
+    button {
+      width: 80px;
+      height: 30px;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+
+    span {
+      margin-left: 10px;
+    }
+
+    table,
+    tr,
+    td {
+      border: 1px solid #ccc;
+    }
+
+    tr {
+      height: 40px;
+    }
+
+    table {
+      width: 630px;
+      text-align: center;
+      border-collapse: collapse;
+      background-color: yellowgreen;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <fieldset>
+      <legend>学生录入系统</legend>
+      <p>
+        <span>姓名:</span>
+        <input type="text" id="username">
+      </p>
+      <p>
+        <span>年龄:</span>
+        <input type="text" id="age">
+      </p>
+      <p>
+        <span>性别:</span>
+        <select name="sex" id="sex">
+          <option value="">请选择性别</option>
+          <option value="男">男</option>
+          <option value="女">女</option>
+        </select>
+      </p>
+      <p>
+        <span>手机:</span>
+        <input type="text" id="phone">
+      </p>
+      <p>
+        <button id="btn">确认提交</button>
+      </p>
+    </fieldset>
+    <table id="employTable">
+      <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+        <td>手机号</td>
+        <td>删除</td>
+      </tr>
+    </table>
+  </div>
+  <script>
+    const btn = document.querySelector('#btn')
+    const inputEls = document.querySelectorAll('input')
+    const sex = document.querySelector('select')
+
+    btn.onclick = function () {
+      const tr = document.createElement('tr')
+      const name = inputEls[0].value
+      const age = inputEls[1].value
+      const phone = inputEls[2].value
+
+      const sexContent = sex.value
+      tr.innerHTML = `<td>${name}</td><td>${age}</td>
+      <td>${sexContent}</td><td>${phone}</td><td><a href='javascript:;'>删除</a></td>`
+
+      const a = tr.querySelector('a')
+      a.onclick = delA
+
+      const employTable=document.querySelector('#employTable')
+      // const tBody=employTable.querySelector('tbody')
+      employTable.appendChild(tr)
+      tr.style.backgroundColor='#fff'
+
+    }
+
+    function delA() {
+      const tr = this.parentNode.parentNode
+      const name = tr.children[0].innerHTML
+      const flag = confirm('确认删除' + name + '?')
+      if (flag) {
+        tr.parentNode.removeChild(tr)
+      }
+    }
+  </script>
+</body>
+
+</html>

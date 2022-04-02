@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .header {
+      width: 100%;
+      line-height: 100px;
+      text-align: center;
+      color: #865a5a;
+      background-color: rgb(198, 195, 212);
+    }
+
+    .main {
+      width: 100%;
+      height: 620px;
+      display: flex;
+      flex-wrap: wrap;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .section_left {
+      flex: 0 0 300px;
+      background-color: rgb(173, 145, 145);
+    }
+
+    .section_left ul {
+      margin: 200px auto;
+    }
+
+    .section_left ul:first-child {
+      border-top: 1px solid #fff;
+    }
+
+    .section_left ul li {
+      width: 100%;
+      line-height: 50px;
+      text-align: center;
+      border-bottom: 1px solid #fff;
+    }
+
+    .sidebar_right {
+      flex: 1;
+      background-color: rgb(105, 90, 90);
+      margin-left: 3px;
+      margin-top: 15px;
+      text-align: center;
+      border-radius: 10px;
+      color: #e6cdcd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer {
+      background-color: rgb(190, 195, 216);
+      text-align: center;
+      line-height: 100px;
+      color: #925959;
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 前端路由的实现主要是用a标签来进行url的跳转，监听url的变化，从而改变页面内容 -->
+  <!-- a标签的href属性必须加上#才不会向服务器发送请求--这就是单页面路由的原理 -->
+  <header class="header">
+    <h1>我是头部</h1>
+  </header>
+  <div class="main">
+    <!-- 左侧导航栏 -->
+    <section class="section_left">
+      <ul>
+        <li><a href="#/">这是默认菜单</a></li>
+        <li><a href="#/html">HTML学习</a></li>
+        <li><a href="#/css">CSS学习</a></li>
+        <li><a href="#/js">JavaScript学习</a></li>
+      </ul>
+    </section>
+    <!-- 右侧内容区域 -->
+    <sidebar class="sidebar_right">
+      <h1>我是默认内容</h1>
+    </sidebar>
+  </div>
+  <!-- 底部 -->
+  <footer class="footer">
+    <h1>我是底部</h1>
+  </footer>
+
+  <script>
+    // 通过js来监听地址栏的hash的变化
+    (function () {
+      function Router() {
+        this.routes = {} //保存路由
+        this.curUrl = '' //获取当前hash值
+      }
+
+      Router.prototype.init = function () {
+        // hashChange事件，当hash变化，调用reloadPage方法
+        window.addEventListener('hashchange', this.reloadPage.bind(this))
+      }
+
+      Router.prototype.reloadPage = function () {
+        this.curUrl = location.hash.substring(1) || '/' //获取当前hash的值去掉#
+        this.routes[this.curUrl]() //运行当前Hash对应的函数
+      }
+
+      Router.prototype.map = function (key, callback) {
+        //保存对应的函数
+        this.routes[key] = callback //key表示hash值去掉#
+      }
+
+      window.ORouter = Router
+    })()
+
+    const router = new ORouter()
+    router.init()
+
+    router.map('/', function () {
+      const oSidebar = document.querySelector('sidebar')
+      oSidebar.innerHTML = '我是主页'
+    })
+
+    router.map('/html', function () {
+      const oSidebar = document.querySelector('sidebar')
+      oSidebar.innerHTML = '我是html主页'
+    })
+    router.map('/css', function () {
+      const oSidebar = document.querySelector('sidebar')
+      oSidebar.innerHTML = '我是css主页'
+    })
+
+    router.map('/js', function () {
+      const oSidebar = document.querySelector('sidebar')
+      oSidebar.innerHTML = '我是js主页'
+    })
+
+    console.log(router)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img{
+      display: block;
+      width:30%;
+      height:300px;
+      margin:0 auto;
+      margin-bottom:20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 懒加载的实现原理:主要是根据img标签有没有src属性决定请不请求资源，最重要的图片是否在页面可视区域内部 -->
+  <!-- 几个重要的API:offsetTop元素距离文档最顶部的距离 包括边框-->
+  <!-- clientHeight元素本身的的宽度高度=height+padding不包括边框 -->
+  <!-- scrollTop滚动条滚动的距离 --距离文档顶部 -->
+  <!-- 如果：offsetTop-scroolTop<clientHeight，则图片进入了可视区内，则被请求。 -->
+  <img date-src="./img/1.jpg" a8t="">
+  <img date-src="./img/2.jpg" a7t="">
+  <img date-src="./img/3.jpg" alt="">
+  <img date-src="./img/8.jpg" a5t="">
+  <img date-src="./img/7.jpg" a6t="">
+  <img date-src="./img/4.jpg" alt="">
+  <img date-src="./img/5.jpg" alt="">
+  <img date-src="./img/6.jpg" alt="">
+
+  <script>
+    const imgEls=document.getElementsByTagName('img')
+
+    function getTop(e){
+      let T=e.offsetTop
+      //offsetTop是元素与offsetParent的距离，循环获取直到页面顶部
+      while(e===e.offsetParent){
+        T+=e.offsetTop
+      }
+
+      return T
+    }
+
+    function lazyLoad(imgs){
+      const H=document.documentElement.clientHeight//获取文档的可视区域的高度
+      const S=document.documentElement.scrollTop||document.body.scrollTop//获取文档的滚动条的高度
+      for(let i=0;i<imgs.length;i++){
+        if(H+S>getTop(imgs[i])){
+          imgs[i].src=imgs[i].getAttribute('date-src')
+
+        }
+      }
+    }
+
+    window.onload=window.onscroll=function(){
+      lazyLoad(imgEls)
+    }
+  </script>
+</body>
+</html>

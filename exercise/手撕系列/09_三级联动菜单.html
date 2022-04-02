@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <select id="province" onchange="changeProvince(this.value)">
+    <option>请选择省份</option>
+  </select>
+  <select id="city" onchange="countyChange(this.value)">
+    <option>请选择地市</option>
+  </select>
+  <select id="county">
+    <option>请选择县城</option>
+  </select>
+
+  <script>
+    const region = {
+      广东: {
+        "广州": ["广州1", "广州2", "广州3"],
+
+        "珠海": ["珠海1", "珠海2", "珠海3"],
+
+        "佛山": ["佛山1"]
+      },
+      湖南: {
+        "常德": ["石门", "桃源", "临澧", "汉寿"],
+
+        "益阳": ["益阳1", "益阳2", "益阳3"]
+      }
+    }
+
+    const province = document.querySelector('#province')
+    const city = document.querySelector('#city')
+    const county = document.querySelector('#county')
+
+    let provinceName = null
+
+    // 循环region
+    for (const ele in region) {
+      // new Option('文本','值',true,true)//两个true表示默认被选中
+      let op = new Option(ele, ele, false, false)
+
+      // console.log(province.options)
+      // console.log(province.length)
+      province.options[province.length] = op
+    }
+
+    // 当发生值改变
+    function changeProvince(value) {
+      city.innerHTML = ''
+
+      if (value === '请选择省份') {
+        let op = new Option('请选择地市', '请选择地市', false, false)
+
+        city.options[0] = op
+      } else {
+        // 循环第二层
+        for (const el in region[value]) {
+          let op = new Option(el, el, false, false)
+
+          city.options[city.length] = op
+        }
+        // 记住选择的省份
+        provinceName = value
+        // 触发三级联动菜单
+        countyChange(city.value)
+      }
+    }
+
+    function countyChange(value) {
+      county.innerHTML = ''
+      if (value === '请选择地市') {
+        let op = new Option('请选择县城', '请选择县城', false, false)
+
+        county.options[0] = op
+      } else {
+        // 循环第三层
+        for (const el in region[provinceName][value]) {
+          let op = new Option(region[provinceName][value][el], region[provinceName][value][el],false, false)
+
+          county.options[county.length] = op
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
