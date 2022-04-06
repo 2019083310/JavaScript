@@ -8,8 +8,10 @@ divEl.addEventListener('click',(event)=>{
   event=event||window.event
 
   console.log(event)
-  // 1.event.target---发生事件的目标
+  // 1.event.target---触发事件的元素
+  // event.current是绑定事件的元素
   console.log(event.target)
+  console.log(event.currentTarget)
 
   // 2.event.type---发生事件的类型
   console.log(event.type)

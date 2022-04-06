@@ -11,7 +11,7 @@ const spanEl=document.querySelector('#san')
 //   console.log('onEvent2')
 // }
 
-// 2.方法二：addEventListe
+// 2.方法二：addEventListener
 // 可以为同一个事件，绑定多个处理函数，都会被依次从上到下执行
 // ie9以下的浏览器不支持
 // divEl.addEventListener('click',(event)=>{
