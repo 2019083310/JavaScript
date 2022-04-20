@@ -7,6 +7,8 @@
 // },1000)
 
 
+// 注意:dom操作改变样式是同步操作，不是异步的。对于requestAnimationFrame是等到微任务队列请空之后立即执行它
+
 console.log("script start")
 
 // 业务代码

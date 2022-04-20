@@ -12,7 +12,7 @@ function throttle(fn,interval,options={immediate:true,trailing:false}){
     let nowTime=new Date().getTime()
     
     // leading优化
-    if(!immediate&&lastTime){
+    if(!immediate&&!lastTime){
       lastTime=nowTime
     }
 

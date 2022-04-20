@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 3000px;
+      width: 3000px;
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      width: 300px;
+      height: 300px;
+      background-color: #bfa;
+      margin-top: 300px;
+      margin-left: 300px;
+    }
+
+    #box1 {
+      width: 300px;
+      height: 300px;
+      background-color: #bfa;
+      margin-top: 100px;
+      margin-left: 300px;
+    }
+
+    #box2 {
+      width: 300px;
+      height: 300px;
+      background-color: #bfa;
+      margin-top: 100px;
+      margin-left: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1-getBondingClientRect() -->
+  <!-- <div id="box"></div> -->
+  <!-- <script>
+    const box = document.querySelector('#box')
+    window.onscroll = function () {
+      // box完整出现在视口里才会输出true，否则为false
+      console.log(checkView(box))
+    }
+
+    function checkView(dom) {
+      const {
+        top,
+        left,
+        right,
+        bottom,
+        width,
+        height
+      } = dom.getBoundingClientRect()
+      console.log(top, left, right, bottom)
+      console.log(window.innerHeight, window.innerWidth)
+
+      return top >= 0 && left >= 0 && bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        right <= (window.innerWidth || document.documentElement.clientWidth)
+    }
+  </script> -->
+  <!-- 2-IntersectionObserver -->
+  <!-- <div id="box">
+    <div id="box1"></div>
+    <div id="box2"></div>
+  </div> -->
+  <script src="./31.9进阶的jsDOM方法.js"></script>
+  <!-- 3-getComputedStyle() -->
+  <!-- <div id="box"></div>
+  <script>
+    const box=document.querySelector('#box')
+    // undefined---getComputedStyle是window上的方法，dom元素没有
+    // console.log(box.getComputedStyle)
+
+    // 返回一个CSSStyleDeclaration对象，包括各种样式
+    const styles=window.getComputedStyle(box)
+    // console.log(styles)
+    // 搭配getPropertyValue(样式属性)可以获取到更具体的样式
+    console.log(styles.getPropertyValue('height'))
+    console.log(styles.getPropertyValue('width'))
+  </script> -->
+  <!-- 4-MutationObserver -->
+  <div id="box"></div>
+</body>
+
+</html>

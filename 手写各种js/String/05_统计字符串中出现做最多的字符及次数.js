@@ -13,14 +13,14 @@ function getFrequentChar(str) {
   for (const item of map) {
     if (res === 0) {
       res = item[1]
-      temp=res
+      temp = res
       result.push(item)
     } else {
-      res = item[1] > res ?item[1] : res
-      if(temp!==res){
+      res = item[1] > res ? item[1] : res
+      if (temp !== res) {
         result.pop()
-        result.push(item,)
-        temp=res
+        result.push(item)
+        temp = res
       }
     }
   }
