@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box{
+      width: 200px;
+      height: 200px;
+      border: 1px solid #ccc;
+    }
+    #box1{
+      width: 100px;
+      height: 100px;
+      /* box-sizing: border-box; */
+      background-color: blue;
+    }
+    #box2{
+      background-color: rebeccapurple;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div id="box1"></div>
+    <!-- <div id="box2"></div> -->
+  </div>
+
+  <script>
+    document.getElementById('box').addEventListener('click',()=>{
+      console.log('aa')
+    },false)
+    document.getElementById('box').addEventListener('click',()=>{
+      console.log('bb')
+    },true)
+    document.getElementById('box1').addEventListener('click',()=>{
+      console.log('cc')
+    },true)
+    document.getElementById('box1').addEventListener('click',()=>{
+      console.log('dd')
+    },false)
+  </script>
+</body>
+</html>
