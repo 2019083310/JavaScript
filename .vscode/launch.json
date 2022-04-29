@@ -4,6 +4,7 @@
   // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+
     {
       "type": "pwa-node",
       "request": "launch",
@@ -11,7 +12,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\手写各种js\\js工具篇\\01_人民币转化.js"
+      "program": "${workspaceFolder}\\js其它知识点补充\\3-代码输出\\04_函数作用域.js"
     }
   ]
 }
