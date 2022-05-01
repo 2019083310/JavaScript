@@ -6,6 +6,7 @@ function LyPromise(executor) {
 
   //定义callbacks属性，保存Pending状态的回调函数
   this.callbacks = []
+
   function resolve(data) {
     if (self.PromiseState !== 'pending') {
       return
@@ -14,8 +15,8 @@ function LyPromise(executor) {
     self.PromiseResult = data
 
     //异步任务成功后执行回调函数
-    setTimeout(()=>{
-      self.callbacks.forEach(item=>{
+    setTimeout(() => {
+      self.callbacks.forEach(item => {
         item.OnResolved(data)
       })
     })
@@ -30,8 +31,8 @@ function LyPromise(executor) {
     self.PromiseResult = reason
 
     //异步任务失败后执行回调函数
-    setTimeout(()=>{
-      self.callbacks.forEach(item=>{
+    setTimeout(() => {
+      self.callbacks.forEach(item => {
         item.OnRejected(reason)
       })
     })
@@ -45,7 +46,8 @@ function LyPromise(executor) {
 }
 
 LyPromise.prototype.then = function (OnResolved, OnRejected) {
-  const that=this
+  const that = this
+  // console.log(this)
 
   //判断回调函数是否存在
   if (typeof OnResolved !== 'function') {
@@ -63,17 +65,17 @@ LyPromise.prototype.then = function (OnResolved, OnRejected) {
     function callback(type) {
       try {
         //获取回调函数的执行结果
-        let result=type(that.PromiseResult)
+        let result = type(that.PromiseResult)
 
         //判断
-        if(result instanceof Promise){
+        if (result instanceof Promise) {
           //如果是Promise对象
-          result.then(v=>{
+          result.then(v => {
             resolve(v)
-          },r=>{
+          }, r => {
             reject(r)
           })
-        }else{
+        } else {
           resolve(result)
         }
       } catch (e) {
@@ -96,15 +98,20 @@ LyPromise.prototype.then = function (OnResolved, OnRejected) {
     }
 
     //如果Promise状态为pending，保存回调函数
-    if(this.PromiseState==='pending'){
+    if (this.PromiseState === 'pending') {
       this.callbacks.push({
-        OnResolved(){
+        OnResolved() {
           callback(OnResolved)
         },
-        OnRejected(){
+        OnRejected() {
           callback(OnRejected)
         }
       })
     }
   })
 }
+
+const p = new LyPromise((resolve, reject) => {
+  resolve(1)
+})
+p.then(console.log(this))

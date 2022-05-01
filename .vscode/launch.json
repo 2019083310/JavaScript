@@ -12,7 +12,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\js其它知识点补充\\3-代码输出\\04_函数作用域.js"
+      "program": "${workspaceFolder}\\js其它知识点补充\\3-代码输出\\05_闭包.js"
     }
   ]
 }
