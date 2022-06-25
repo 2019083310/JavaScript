@@ -1,0 +1,88 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #7bdaf3;
+  box-sizing: border-box;
+}
+
+.btn {
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  width: 120px;
+  height: 50px;
+  padding: 5px;
+  border: none;
+
+  color: #fff;
+  background-color: #9ec862;
+}
+
+.btn:active {
+  transform: scale(0.9);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  margin-top: 50px;
+}
+
+.container .note {
+  width: 400px;
+  height: 400px;
+  margin-left: 30px;
+  margin-top: 50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.container .note .top {
+  position: relative;
+  width: 100%;
+  height: 35px;
+  padding: 10px;
+  background-color: #9ec862;
+}
+
+.container .note .top button {
+  position: absolute;
+  line-height: 35px;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.container .note .top .edit {
+  right: 80px;
+}
+
+.container .note .top .delete {
+  right: 40px;
+}
+
+.container .note textarea {
+  width: 100%;
+  height: 400px;
+  border: none;
+  padding: 20px;
+  outline: none;
+  font-size: 16px;
+}
+
+.container .note .main {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.hidden {
+  display: none;
+}

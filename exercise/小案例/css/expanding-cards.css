@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 90%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.container .panel {
+  position: relative;
+  flex:0.5;
+  height: 80vh;
+  margin: 10px;
+  border-radius: 30px;
+  color: #fff;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition: all 0.5s ease-in;
+}
+
+.container .panel h3 {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  opacity: 0;
+}
+
+.container .panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+.container .panel.active {
+  flex: 5;
+}
