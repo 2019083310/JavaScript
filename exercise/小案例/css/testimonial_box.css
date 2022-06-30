@@ -1,0 +1,65 @@
+body,
+p {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.container {
+  width: 608px;
+  height: 287px;
+  padding: 50px;
+  margin: 300px auto;
+  border-radius: 15px;
+
+  background-color: #476ce4;
+}
+
+.container .progress_bar {
+  width: 608px;
+  height: 5px;
+  background-color: #fff;
+
+  animation: toggleProgress 10s linear infinite;
+  transform-origin: left;
+}
+
+.container .content {
+  margin-top: 30px;
+
+  font-size: 20px;
+  color: #fff;
+}
+
+.container .auth_info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  margin-top: 20px;
+
+}
+
+.container .auth_info .avatar {
+  display: block;
+}
+
+.container .auth_info .info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  color: #fff;
+}
+
+@keyframes toggleProgress {
+  from {
+    transform: scaleX(0);
+  }
+}

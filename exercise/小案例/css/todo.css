@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+.logo {
+  margin-top: 200px;
+
+  font-size: 160px;
+  color: rgb(179, 131, 226);
+  text-align: center;
+  opacity: 0.5;
+}
+
+/* form是一个块级元素 */
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 350px;
+  margin: 70px auto;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form .edit,
+.form .todo-list .item {
+  display: block;
+  width: 350px;
+  height: 70px;
+  line-height: 50px;
+  padding: 10px;
+  border: none;
+
+  font-size: 30px;
+  text-align: center;
+}
+
+.edit::placeholder {
+  color: #d5d5d5;
+}
+
+.edit:focus {
+  outline-color: rgb(179, 131, 226);
+}
+
+.form .todo-list .item {
+  border-top: 1px solid #e5e5e5;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.form .todo-list .completed {
+  color: #b6b6b6;
+  text-decoration: line-through;
+}
+
+.intro {
+  width: 350px;
+  margin: 50px auto;
+}
+
+.intro p {
+  font-size: 20px;
+  color: #b5b5b5;
+  text-align: center;
+}

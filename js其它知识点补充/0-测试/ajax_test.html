@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    getData()
+    async function getData() {
+      let res = await requestFn('get', 'https://randomuser.me/api?results=50')
+      console.log(res)
+    }
+
+    // 封装ajax请求
+    function requestFn(method, url) {
+      return new Promise((resolve, reject) => {
+        // 发送ajax请求
+        const xhr = new XMLHttpRequest()
+        xhr.open(method, url)
+        xhr.send()
+        xhr.addEventListener('readystatechange', () => {
+          if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
+            // console.log(JSON.parse(xhr.response).results)
+            resolve(JSON.parse(xhr.response).results)
+          }
+        })
+      })
+    }
+  </script>
+</body>
+
+</html>
