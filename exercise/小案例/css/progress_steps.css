@@ -1,0 +1,77 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  box-sizing: border-box;
+  background-color: #f6f7fb;
+}
+
+.container {
+  width: 350px;
+  height: 104px;
+  text-align: center;
+}
+
+.container .progress_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}
+
+.container .progress_container .progress {
+  position: absolute;
+  width: 0%;
+  height: 4px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
+  background-color: #3498db;
+
+  z-index: -1;
+  transition: all 0.4s ease;
+}
+
+.container .progress_container .circle {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  padding: 3px;
+  border: 2px solid #999;
+  border-radius: 50%;
+
+  color: #999;
+  text-align: center;
+  background-color: #fff;
+}
+
+.container .progress_container .circle.active {
+  border-color: #3498db;
+}
+
+.container .btn {
+  padding: 8px 30px;
+  margin: 15px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #3498db;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
