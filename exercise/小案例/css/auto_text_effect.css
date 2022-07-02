@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: darksalmon;
+}
+
+.btn {
+  position: fixed;
+  bottom: 40px;
+  padding:10px 20px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn #speed {
+  width: 50px;
+  padding: 5px;
+  font-size: 18px;
+  background-color: darksalmon;
+  border: none;
+  text-align: center;
+}
+
+.btn #speed:focus {
+  outline: none;
+}
