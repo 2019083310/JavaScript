@@ -1,0 +1,93 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background-color: #3494e4;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-top: 50px;
+}
+
+.container .title {
+  margin-bottom: 20px;
+}
+
+.container .wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 142px;
+  height: 322px;
+  border: 4px solid #144fc6;
+  margin: 60px 0 20px;
+
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+
+  color: #144fc6;
+  background-color: #fff;
+}
+
+.container .wrapper .remained {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container .wrapper .percent {
+  height: 0;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  text-align: center;
+  overflow: hidden;
+  background-color: #3494e4;
+}
+
+.container .select-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 280px;
+  height: 210px;
+  margin-top: 20px;
+}
+
+.container .select-list .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 95px;
+  margin-top: 10px;
+  border: 4px solid #144fc6;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+
+  font-size: 14px;
+  color: #144fc6;
+  text-align: center;
+
+  background-color: #fff;
+}
+
+.container .select-list .item.active {
+  color: #fff;
+  background-color: #3494e4;
+}
