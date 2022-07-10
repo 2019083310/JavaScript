@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: #8e44ad;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 800px;
+}
+
+.container .company {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 204px;
+  height: 175px;
+
+  color: #fff;
+}
+
+.container .company .fab {
+  font-size: 60px;
+}
+
+.container .company .counter {
+  font-size: 40px;
+}

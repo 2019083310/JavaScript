@@ -1,0 +1,37 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: #111;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 400px;
+  height: 500px;
+}
+
+.container .box {
+  width: 16px;
+  height: 16px;
+  margin: 2px;
+
+  background-color: rgb(29, 29, 29);
+}
+
+/* .container .box.active{
+
+} */
